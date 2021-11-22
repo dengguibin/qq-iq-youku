@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "qq_iqiyi_youku",
+  "version": "1.0",
+  "description": "qq_iqiyi_youku",
+  "icons": {
+    "128":"img/portrait.png",
+    "48":"img/portrait.png",
+    "16":"img/portrait.png"
+  },
+  "browser_action": {
+    "default_icon": "img/portrait.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+     "scripts": ["js/back.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://v.qq.com/**"],
+      "js": ["js/qqcontent.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://www.iqiyi.com/**"],
+      "js": ["js/iqiyicontent.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://*.youku.com/**"],
+      "js": ["js/youkucontent.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "cookies",
+    "tabs",
+    "*://*/*",
+    "http://*/*",
+    "https://*/*"
+  ]
+
+
+}
