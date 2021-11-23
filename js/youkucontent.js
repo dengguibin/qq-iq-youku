@@ -1,6 +1,5 @@
 var windowHref = window.location.href;
 
-
 if (windowHref.indexOf("com/profile") != -1
     || windowHref.indexOf("mp.youku") != -1
     || windowHref.indexOf("com/page/msg") != -1
@@ -14,9 +13,6 @@ if (windowHref.indexOf("youku.") != -1) {
 
 
 
-// 禁用隐私元素事件
-// 设置1080P
-// 清理掉cookie
 // document.addEventListener('DOMContentLoaded',function () {
 window.onload= function(){
     if (windowHref.indexOf("youku.") != -1) {
