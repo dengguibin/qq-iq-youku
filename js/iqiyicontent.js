@@ -6,41 +6,27 @@ if (windowHref.indexOf("iqiyi.com/u/record") != -1) {
     window.close();
 }
 
-// 禁止浏览私人信息
-// 设置高清
-// 清理cookie
 document.addEventListener('DOMContentLoaded', function(){
     if (windowHref.indexOf("iqiyi.") != -1) {
+        var forbiddenIds = ["nav_renewBtn","J-nav-login","nav_game"
+            ,"J-nav-upload","nav_appDown","nav_message"
+            ,"J-header-play-history-wrap"]
         var flag = setInterval(function () {
-            if (document.getElementById("nav_renewBtn")) {
-                document.getElementById("nav_renewBtn").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("J-nav-login")) {
-                document.getElementById("J-nav-login").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("nav_game")) {
-                document.getElementById("nav_game").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("J-nav-upload")) {
-                document.getElementById("J-nav-upload").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("nav_appDown")) {
-                document.getElementById("nav_appDown").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("nav_message")) {
-                document.getElementById("nav_message").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("J-header-play-history-wrap")) {
-                document.getElementById("J-header-play-history-wrap").style.cssText="pointer-events:none;"
-            }
-            if (document.getElementById("J-nav-login")) {
-                document.getElementById("J-nav-login").style.cssText="pointer-events:none;"
+            for (const id of forbiddenIds) {
+                if (document.getElementById(id)) {
+                    document.getElementById(id).style.cssText="pointer-events:none;"
+                }
             }
         },1000);
 
         setTimeout(function () {
             clearInterval(flag);
         },1000*5);
+
+        if (document.getElementsByClassName("iqp-txt-stream")
+            && document.getElementsByClassName("iqp-txt-stream")[1]) {
+            document.getElementsByClassName("iqp-txt-stream")[1].click();
+        }
 
         setTimeout(function () {
             if (document.getElementsByClassName("iqp-txt-stream")
@@ -52,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function(){
                     setTimeout(function () {
                         clearCookie();
                     },1000*5);
-                },1000*10);
+                },1000*5);
             }
-        },1000*15);
+        },1000*10);
     }
 })
 
